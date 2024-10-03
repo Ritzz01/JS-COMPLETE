@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="display"></div>
+    <div class="button">
+      <button id="topp">Remove top</button>
+      <button id="bottom">Remove Bottom</button>
+    </div>
+
+    <div>
+      <input id="input" type="input" placeholder="Enter any fruit name" />
+      <button id="Addt">Add Top</button>
+      <button id="AddB">Add Bottom</button>
+    </div>
+
+    <script>
+      let fruits = ["apple", "mango", "banana", "papaya"];
+
+      let display = document.getElementById("display");
+
+      function displayFruit(fruits) {
+        let res = "";
+        for (let i = 0; i < fruits.length; i++) {
+          res += `<li>${fruits[i]}</li>`;
+        }
+        display.innerHTML = res;
+      }
+      displayFruit(fruits);
+
+      let topp = document.querySelector("#topp");
+      let bottom = document.querySelector("#bottom");
+
+      topp.addEventListener("click", () => {
+        fruits.shift();
+        displayFruit(fruits);
+      });
+
+      bottom.addEventListener("click", () => {
+        fruits.pop();
+        displayFruit(fruits);
+      });
+
+      let addT = document.getElementById("Addt");
+      let addB = document.getElementById("AddB");
+      let input = document.getElementById("input");
+
+      addT.addEventListener('click',()=>{
+        let a=input.value
+
+        if(a)
+      {
+        fruits.unshift(a)
+        displayFruit(fruits)
+      }
+      else{
+        alert('enter fruit name')
+      }
+      })
+
+      addB.addEventListener('click',()=>{
+        let a=input.value
+
+        if(a)
+      {
+        fruits.push(a)
+        displayFruit(fruits)
+      }
+      else{
+        alert('enter fruit name')
+      }
+      })
+    </script>
+  </body>
+</html>

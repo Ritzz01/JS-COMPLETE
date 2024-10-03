@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <style>
+      .toggle {
+        border-radius: 100px;
+        border-color: white;
+        background-color: black;
+        color: white;
+      }
+      #box {
+        visibility: hidden;
+      }
+
+      .visible {
+        visibility: visible;
+      }
+    </style>
+  </head>
+
+  <body>
+    <navbar class="navbar bg-black">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand d-flex text-white"
+          ><i class="bi bi-snow me-3"></i>
+          <h2>JS</h2>
+        </a>
+
+        <button id="Login" class="btn btn-warning">Login</button>
+      </div>
+    </navbar>
+
+    <div id="box" class="container-fluid">
+      <div class="row">
+        <div class="col-5 mx-auto">
+          <div class="card mt-5">
+            <div
+              class="card-header bg-black text-white text-center d-flex justify-content-around"
+            >
+              <h4>Login Details</h4>
+
+              <button id="remove" class="toggle">
+                <i class="bi bi-x"></i>
+              </button>
+            </div>
+
+            <div class="card-body">
+              <form>
+                <input
+                  type="text"
+                  placeholder="enter your name"
+                  class="form-control mb-3 text-center"
+                />
+
+                <input
+                  type="password"
+                  placeholder="enter your password"
+                  class="form-control text-center"
+                />
+
+                <button class="btn btn-success mt-4 d-block mx-auto">
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let LoginBtn = document.getElementById("Login");
+      let popUp = document.getElementById("box");
+
+      LoginBtn.addEventListener("click", () => {
+        popUp.classList.add("visible");
+      });
+
+      let removeBox = document.getElementById("remove");
+      removeBox.addEventListener("click", () => {
+        popUp.classList.remove("visible");
+      });
+
+      window.addEventListener("keyup", (e) => {
+        if (e.key == "Escape") {
+          popUp.classList.remove("visible");
+        }
+      });
+    </script>
+  </body>
+</html>

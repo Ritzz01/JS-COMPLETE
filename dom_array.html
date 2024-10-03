@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- show as list -->
+    <div id="display"></div>
+    <div class="button">
+      <button id="rmvF">Remove First Fruit</button>
+      <button id="rmvL">Remove Last Fruit</button>
+    </div>
+
+    <div>
+      <input id="text" type="text" placeholder="write the fruit name" />
+      <button id="addTop">Add on the top</button>
+      <button id="addDown">Add in the bottom</button>
+    </div>
+    <script>
+      let display = document.getElementById("display");
+
+      let fruits = ["grapes", "apple", "kiwi", "mango"];
+
+      function fruit(fruits) {
+        let res = "";
+        for (let i = 0; i < fruits.length; i++) {
+          // console.log(fruits[i]);
+
+          res += `<li>${fruits[i]} </li>`;
+        }
+        display.innerHTML = res;
+      }
+      fruit(fruits);
+
+      let btnF = document.getElementById("rmvF");
+      let btnL = document.getElementById("rmvL");
+
+      btnF.addEventListener("click", () => {
+        fruits.shift();
+        fruit(fruits);
+      });
+
+      btnL.addEventListener("click", () => {
+        fruits.pop();
+        fruit(fruits);
+      });
+
+      let addTop = document.getElementById("addTop");
+      let addDown = document.getElementById("addDown");
+      let text = document.getElementById("text");
+      addTop.addEventListener("click", () => {
+        let a = text.value;
+        if (a) {
+          fruits.unshift(a);
+          fruit(fruits);
+         text.value = "";
+        } else {
+          alert("please provide fruit name");
+        }
+      });
+
+      addDown.addEventListener("click", () => {
+        let a = text.value;
+        if (a) {
+          fruits.push(a);
+          fruit(fruits);
+          text.value = "";
+        } else {
+          alert("please provide fruit name");
+        }
+      });
+      //   for(let fruit of fruits)
+      //   {
+      //     let li=document.createElement('li')
+      //     li.innerHTML=`${fruit}`
+      //     display.appendChild(li)
+      //   }
+    </script>
+  </body>
+</html>

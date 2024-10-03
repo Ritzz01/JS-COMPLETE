@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        width: 100%;
+        border: 2px solid black;
+      }
+      thead {
+        background-color: black;
+        color: white;
+      }
+
+      tbody {
+        text-align: center;
+      }
+
+      tr {
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <th>id</th>
+        <th>name</th>
+        <th>username</th>
+        <th>address</th>
+        <th>pincode</th>
+        <th>latitude</th>
+        <th>longitude</th>
+      </thead>
+      <tbody id="display"></tbody>
+    </table>
+
+    <script>
+      let url = "https://jsonplaceholder.typicode.com/users";
+      let display = document.getElementById("display");
+
+      async function main() {
+        try {
+          let response = await fetch(url);
+          let data = await response.json();
+          let res = "";
+
+          data.forEach((i) => {
+            res += `<tr>
+             <td>${i.id}</td>
+             <td>${i.name}</td>
+             <td>${i.username}</td>
+             <td>${i.address.city}</td>
+             <td>${i.address.zipcode}</td>
+             <td>${i.address.geo.lat}</td>
+             <td>${i.address.geo.lng}</td>
+             </tr>
+             `;
+          });
+
+          display.innerHTML = res;
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      main();
+    </script>
+  </body>
+</html>

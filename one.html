@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+        }
+        div{
+            background-color: aqua;
+            text-align: center;
+            padding: 20px;
+        }
+        button{
+            margin-top: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <h1 id="text">Hello</h1>
+        <button onclick="select()">Click Here</button>
+    </div>
+
+    <script>
+        let textData=document.getElementById("text");
+        
+        function select() {
+            textData.textContent="Hello World";
+            textData.style.color="Blue"
+        }
+
+    </script>
+</body>
+</html>
